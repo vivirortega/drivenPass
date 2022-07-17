@@ -8,4 +8,8 @@ export async function signUp(req: Request, res: Response) {
   res.sendStatus(201);
 }
 
-export async function login(req: Request, res: Response) {}
+export async function login(req: Request, res: Response) {
+  const user: CreateUser = req.body;
+  const token = await authService.login(user);
+  res.status(200).send(token);
+}
