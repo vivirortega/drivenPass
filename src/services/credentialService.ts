@@ -2,6 +2,9 @@ import { credentials, users } from "@prisma/client";
 import credentialsRepository from "../repositories/credentialRepository.js";
 import { CredentialUserId } from "../types/credentialTypes.js"
 import * as utils from "../utils/index.js";
+import Cryptr from "cryptr";
+
+const cryptr = new Cryptr(process.env.CRYPTR_KEY);
 
 interface UserProps {
     user_id: number;
@@ -21,5 +24,17 @@ async function createCredential(credential: CredentialUserId, userProps: UserPro
 
 }
 
-const credentialsService = { createCredential };
+
+async function getCredencial(id: number){
+    const credentials = await credentialsRepository.getCredencial(id);
+   
+    credentials.map((credential) => {
+        const decryptedString = cryptr.decrypt(credential.password);
+        credential.password = decryptedString;
+    });
+
+    return credentials;
+}
+
+const credentialsService = { createCredential, getCredencial };
 export default credentialsService;

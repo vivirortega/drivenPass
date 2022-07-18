@@ -10,3 +10,11 @@ export async function createCredential(req: Request, res: Response){
     await credentialService.createCredential({...credential }, {user_id: user.id, user: ""});
     res.sendStatus(201);
 }
+
+export async function getCredential(req: Request, res: Response){
+    const id = parseInt(req.params.id);
+    const { user } = res.locals;
+    console.log(id);
+    const credential = await credentialService.getCredencial(id);
+    res.send(credential);
+}

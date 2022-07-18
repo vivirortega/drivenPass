@@ -1,3 +1,4 @@
+import { credentials } from "@prisma/client";
 import Cryptr from "cryptr";
 
 export async function encrypt(password: string){

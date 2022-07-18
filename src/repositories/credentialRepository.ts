@@ -21,5 +21,13 @@ export async function insertCredential(credential: CredentialUserId, userProps: 
   await prisma.credentials.create({data: {...credential, ...userProps}});
 }
 
-const credentialsRepository = { checkTitle, insertCredential };
+export async function getCredencial(id: number){
+  return await prisma.credentials.findMany({
+    where: {
+        id: id,
+    },
+});
+}
+
+const credentialsRepository = { checkTitle, insertCredential, getCredencial };
 export default credentialsRepository;
