@@ -36,5 +36,10 @@ async function getCredencial(id: number){
     return credentials;
 }
 
-const credentialsService = { createCredential, getCredencial };
+
+async function deleteCredential(id: number){
+   await credentialsRepository.deleteCredential(id);
+}
+
+const credentialsService = { createCredential, getCredencial, deleteCredential };
 export default credentialsService;
