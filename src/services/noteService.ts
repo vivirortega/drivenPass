@@ -19,9 +19,25 @@ async function createNote(user_id: UserProps, note: NoteService){
     await notesRepository.insertNote(user_id.user_id, note);
 }
 
+async function renderNote(id: number){
+    const note = await notesRepository.selectNote(id);
+
+    if(!note){
+        throw {
+            status: "not found",
+            message: "note not found"
+        };
+    }
+    return note;
+}
+
+async function deleteNote(id: number){
+
+}
 
 const noteService = {
-    createNote
+    createNote, renderNote, deleteNote,
   };
-  export default noteService;
+
+export default noteService;
   

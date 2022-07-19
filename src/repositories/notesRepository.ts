@@ -18,8 +18,16 @@ export async function checkTitle(user_id: number, title: string){
   return titleUser;
 }
 
+export async function selectNote(id: number) {
+  return await prisma.notes.findFirst({
+    where: {
+      id: id,
+    },
+  });
+}
+
 const notesRepository = {
-    insertNote, checkTitle
+    insertNote, checkTitle, selectNote
   };
   export default notesRepository;
   
