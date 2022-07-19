@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import credentialsRepository from "../repositories/credentialRepository.js";
-import { CredentialUserId } from "../types/credentialTypes.js";
+import { CredentialUserId } from "../types/genericTypes.js";
 import credentialService from "../services/credentialService.js";
 
 export async function createCredential(req: Request, res: Response){

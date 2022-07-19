@@ -1,6 +1,6 @@
 import { credentials, users } from "@prisma/client";
 import prisma from "../database/database.js";
-import { CredentialUserId } from "../types/credentialTypes.js";
+import { CredentialUserId } from "../types/genericTypes.js";
 
 interface UserProps {
   user_id: number;

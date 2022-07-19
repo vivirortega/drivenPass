@@ -34,7 +34,7 @@ model credentials{
 model notes{
   id Int @id @default(autoincrement())
   user_id    Int
-  label      String
+  title      String
   content    String
   created_at DateTime @default(now())
   user users @relation(fields: [user_id], references: [id])
@@ -43,7 +43,7 @@ model notes{
 model cards{
   id Int @id @default(autoincrement())
   user_id   Int
-  label      String
+  title      String
   number     String          @db.VarChar(16)
   exp_date   String          @db.VarChar(5)
   cvc        String

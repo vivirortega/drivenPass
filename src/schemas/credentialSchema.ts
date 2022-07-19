@@ -1,5 +1,5 @@
 import joi from "joi";
-import { CredentialUserId } from "../types/credentialTypes.js";
+import { CredentialUserId } from "../types/genericTypes.js";
 
 export const credentialSchema = joi.object<CredentialUserId>({
   title: joi.string().required(),

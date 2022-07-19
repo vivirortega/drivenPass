@@ -1,6 +1,6 @@
 import { credentials, users } from "@prisma/client";
 import credentialsRepository from "../repositories/credentialRepository.js";
-import { CredentialUserId } from "../types/credentialTypes.js"
+import { CredentialUserId } from "../types/genericTypes.js"
 import * as utils from "../utils/index.js";
 import Cryptr from "cryptr";
 
