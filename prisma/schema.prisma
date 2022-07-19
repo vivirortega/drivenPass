@@ -43,12 +43,11 @@ model notes{
 model cards{
   id Int @id @default(autoincrement())
   user_id   Int
-  title      String
-  number     String          @db.VarChar(16)
-  exp_date   String          @db.VarChar(5)
+  name      String
+  number     String          
+  exp_date   String          
   cvc        String
   password   String
-  owner      String
   is_virtual Boolean
   created_at DateTime        @default(now())
   type       CardTypes
