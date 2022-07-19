@@ -32,7 +32,15 @@ async function renderNote(id: number){
 }
 
 async function deleteNote(id: number){
-
+    const noteExist = await notesRepository.selectNote(id);
+    if(!noteExist){
+        throw {
+            status: "not found",
+            message: "note not found"
+        };
+    }
+    
+    await notesRepository.deleteNote(id);
 }
 
 const noteService = {

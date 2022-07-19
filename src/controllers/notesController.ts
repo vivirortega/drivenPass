@@ -19,3 +19,10 @@ export async function getNote(req: Request, res: Response){
     const note = await noteService.renderNote(id);
     res.status(200).send(note);
 }
+
+export async function deleteNote(req: Request, res: Response){
+    const id = parseInt(req.params.id);
+
+    await noteService.deleteNote(id);
+    res.sendStatus(200);
+}
