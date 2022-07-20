@@ -57,7 +57,7 @@ model cards{
 model wifi{
   id Int @id @default(autoincrement())
   user_id   Int
-  title     String   @unique 
+  title     String   
   password  String
   created_at DateTime @default(now())
   user users @relation(fields: [user_id], references: [id])
