@@ -58,9 +58,8 @@ model wifi{
   id Int @id @default(autoincrement())
   user_id   Int
   title     String   @unique 
-  name      String
   password  String
-  createdAt DateTime @default(now())
+  created_at DateTime @default(now())
   user users @relation(fields: [user_id], references: [id])
 
 }
