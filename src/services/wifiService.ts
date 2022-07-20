@@ -6,9 +6,21 @@ async function createWifi(user_id: number, wifi: WifiService) {
     await wifiRepository.insertWifi(user_id, wifi);
 }
 
+async function renderWifi(id: number){
+  const wifi = await wifiRepository.getWifi(id);
+
+  if(!wifi){
+      throw {
+          status: "not found",
+          message: "note not found"
+      };
+  }
+  return wifi;
+}
+
 
 const wifiService = {
-    createWifi
+    createWifi, renderWifi
   };
 
 export default wifiService;

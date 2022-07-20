@@ -11,8 +11,17 @@ export async function insertWifi(user_id: number, wifi: WifiService) {
     await prisma.wifi.create({ data: { ...wifi, user_id }});
   }
 
+export async function getWifi(id: number){
+    return await prisma.wifi.findFirst({
+        where: {
+          id: id,
+        },
+      });
+}
+
+
 const wifiRepository = {
-  insertWifi,
+  insertWifi, getWifi
 };
 
 export default wifiRepository;
