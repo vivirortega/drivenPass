@@ -24,8 +24,21 @@ async function renderCard(id: number){
     return card;
 }
 
+async function removeCard(id: number){
+    const card = await cardRepository.selectCard(id);
+
+    if(!card){
+        throw {
+            status: "not found",
+            message: "card not found"
+        };
+    }
+
+    await cardRepository.deleteCard(id);
+}
+
 const cardService = {
-    createCard, renderCard
+    createCard, renderCard, removeCard,
   };
   export default cardService;
   

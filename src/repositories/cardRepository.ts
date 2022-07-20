@@ -20,8 +20,15 @@ export async function selectCard(id: number) {
     });
   }
   
+export async function deleteCard(id: number) {
+    return await prisma.cards.deleteMany({
+      where: {
+        id: id,
+      },
+    });
+  }
 
 const cardRepository = {
-  insertCard, selectCard
+  insertCard, selectCard, deleteCard
 };
 export default cardRepository;
