@@ -9,9 +9,19 @@ interface UserProps {
 export async function insertCard(user_id: number, card: CardService) {
     console.log("esse eh o id ao inserir", user_id);
   return await prisma.cards.create({ data: { ...card, user_id } });
+
 }
 
+export async function selectCard(id: number) {
+    return await prisma.cards.findFirst({
+      where: {
+        id: id,
+      },
+    });
+  }
+  
+
 const cardRepository = {
-  insertCard,
+  insertCard, selectCard
 };
 export default cardRepository;

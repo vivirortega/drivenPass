@@ -12,8 +12,20 @@ async function createCard(user_id: UserProps, note: CardService){
     await cardRepository.insertCard(user_id.user_id, note);
 }
 
+async function renderCard(id: number){
+    const card = await cardRepository.selectCard(id);
+
+    if(!card){
+        throw {
+            status: "not found",
+            message: "card not found"
+        };
+    }
+    return card;
+}
+
 const cardService = {
-    createCard,
+    createCard, renderCard
   };
   export default cardService;
   
