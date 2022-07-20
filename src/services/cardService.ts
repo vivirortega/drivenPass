@@ -1,5 +1,6 @@
 import { CardService } from "../types/genericTypes.js"
 import cardRepository from "../repositories/cardRepository.js"
+import * as utils from "../utils/index.js";
 
 interface UserProps {
     id: number;
@@ -7,10 +8,13 @@ interface UserProps {
     user: string;
 }
 
-async function createCard(user_id: UserProps, note: CardService){
-    console.log("userid depois de vir do controller", user_id.user_id);
-    await cardRepository.insertCard(user_id.user_id, note);
+async function createCard(user_id: number, note: CardService){
+    const passwordHash = await utils.encrypt(note.password);
+    const cvcHash = await utils.encrypt(note.cvc);
+    console.log("userid depois de vir do controller", user_id);
+    await cardRepository.insertCard(user_id, {...note, password: passwordHash, cvc: cvcHash});
 }
+
 
 async function renderCard(id: number){
     const card = await cardRepository.selectCard(id);
