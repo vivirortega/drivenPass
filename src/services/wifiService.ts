@@ -12,15 +12,27 @@ async function renderWifi(id: number){
   if(!wifi){
       throw {
           status: "not found",
-          message: "note not found"
+          message: "wifi not found"
       };
   }
   return wifi;
 }
 
+async function deleteWifi(id: number){
+  const wifi = await wifiRepository.getWifi(id);
+  if(!wifi){
+    throw{
+      status: "not found",
+      message: "wifi not found"
+    }
+  }
+
+  await wifiRepository.deleteWifi(id);
+}
+
 
 const wifiService = {
-    createWifi, renderWifi
+    createWifi, renderWifi, deleteWifi
   };
 
 export default wifiService;

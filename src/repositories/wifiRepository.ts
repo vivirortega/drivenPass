@@ -19,9 +19,16 @@ export async function getWifi(id: number){
       });
 }
 
+export async function deleteWifi(id: number) {
+  return await prisma.wifi.deleteMany({
+    where: {
+      id: id,
+    },
+  });
+}
 
 const wifiRepository = {
-  insertWifi, getWifi
+  insertWifi, getWifi, deleteWifi
 };
 
 export default wifiRepository;

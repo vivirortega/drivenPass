@@ -17,3 +17,10 @@ export async function getWifi(req: Request, res: Response){
     const wifi = await wifiService.renderWifi(id);
     res.status(200).send(wifi);
 }
+
+export async function deleteWifi(req: Request, res: Response){
+    const id = parseInt(req.params.id);
+
+    await wifiService.deleteWifi(id);
+    res.sendStatus(200);
+}
