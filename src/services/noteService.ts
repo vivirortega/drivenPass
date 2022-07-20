@@ -7,16 +7,17 @@ interface UserProps {
     user: string;
 }
 
-async function createNote(user_id: UserProps, note: NoteService){
-    //const checkTitle = await notesRepository.checkTitle(user.id, note.title);
-    //if(checkTitle){
-        //throw {
-            //status: "unauthorized",
-            //message: "title already registered"
-        //};
-    //}
+async function createNote(user_id: number, note: NoteService){
+    console.log("antes de ir pra checar o titulo", user_id)
+    const checkTitle = await notesRepository.checkTitle(user_id, note.title);
+    if(checkTitle){
+        throw {
+            status: "unauthorized",
+            message: "title already registered"
+        };
+    }
     console.log("user depois da função de checar titulo", user_id);
-    await notesRepository.insertNote(user_id.user_id, note);
+    await notesRepository.insertNote(user_id, {...note});
 }
 
 async function renderNote(id: number){

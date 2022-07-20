@@ -2,7 +2,7 @@ import prisma from "../database/database.js";
 import { NoteService } from "../types/genericTypes.js";
 
 export async function insertNote(user_id: number, note: NoteService) {
-  console.log("esse é o user no final", user_id);
+  console.log("esse é os valores da note no repository", { ...note, user_id });
   return prisma.notes.create({ data: { ...note, user_id } });
 }
 
